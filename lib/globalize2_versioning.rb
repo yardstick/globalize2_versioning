@@ -27,6 +27,7 @@ module Globalize
               translation = @record.globalize_translations.find_or_initialize_by_locale(locale.to_s)
             end
             attrs.each{|attr_name, value| translation[attr_name] = value }
+            translation.updated_at = Time.now
             translation.save!
           end
         end
